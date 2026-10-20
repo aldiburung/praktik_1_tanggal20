@@ -1,0 +1,22 @@
+1. Perbedaan Mendasar Antara List dan Tuple
+ * List: Bersifat mutable (isinya dapat diubah, ditambah, atau dihapus setelah dibuat) dan didefinisikan menggunakan kurung siku [].
+ * Tuple: Bersifat immutable (tidak dapat diubah setelah dibuat) dan didefinisikan menggunakan kurung biasa ().
+ * Skenario Penggunaan:
+   * Tuple lebih tepat digunakan untuk data konstan yang tidak boleh berubah (seperti koordinat geografis atau tanggal tetap) dan digunakan sebagai kunci dictionary.
+   * List lebih tepat digunakan untuk koleksi data yang dinamis dan nilainya sering berubah selama eksekusi program (seperti daftar belanja atau item yang bisa ditambah dan dihapus).
+2. Alasan Set Tidak Mendukung Pengindeksan
+ * Set tidak mendukung pengindeksan karena set bersifat unordered (koleksi elemen tanpa urutan).
+ * Di dalam memori, set diimplementasikan menggunakan hash table, di mana penempatan elemen didasarkan pada nilai hash-nya, bukan berdasarkan nomor indeks numerik yang berurutan.
+3. Konsep Hashable dan Kunci Dictionary
+ * Hashable: Objek yang memiliki nilai hash (kode unik) yang tetap selama masa hidup objek tersebut.
+ * Tiga Tipe Data Hashable (Immutable): int, float, dan str (serta tuple).
+ * Tiga Tipe Data Tidak Hashable (Mutable): list, dict, dan set.
+ * Alasan Kunci Dictionary Harus Hashable: Karena dictionary diimplementasikan menggunakan hash table untuk pencarian berbasis kunci dengan kecepatan rata-rata O(1). Jika kunci bisa diubah (mutable), nilai hash-nya akan ikut berubah sehingga data tidak akan dapat ditemukan kembali.
+4. Kompleksitas Waktu Pencarian (operator in) pada Set (O(1)) vs List (O(n))
+ * List (O(n)): Python harus memeriksa elemen satu per satu secara berurutan dari awal hingga akhir elemen di dalam list.
+ * Set (O(1)): Python langsung menghitung nilai hash dari elemen yang dicari untuk menuju lokasi memori penyimpanannya secara instan tanpa perlu pengecekan bertahap.
+ * Implikasi Praktis: Untuk dataset atau kumpulan data yang berukuran besar, penggunaan set memberikan performa pencarian dan validasi keanggotaan yang jauh lebih cepat dibandingkan list.
+5. Perbedaan Metode sort() dan Fungsi sorted() pada List
+ * list.sort(): Adalah metode in-place yang mengubah urutan list asli secara langsung di memori dan mengembalikan nilai None.
+ * sorted(data): Adalah fungsi bawaan yang menghasilkan list baru yang sudah terurut tanpa mengubah atau merusak list aslinya.
+ * Kapan Menggunakan: Gunakan metode sort() jika Anda ingin langsung mengubah urutan data yang ada untuk menghemat memori, dan gunakan fungsi sorted() jika data asli harus tetap dipertahankan bentuknya.
